@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="1" author="alekseev">
+        <createTable tableName="cars">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="car_name" type="char(50)">
+            </column>
+            <column name="color" type="char(50)">
+            </column>
+            <column name="price" type="int">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="alekseev">
+        <sql>
+            insert into car (car_name,color, price)
+            VALUES ('Buick', 'black', 5000),
+                   ('Audi', 'White', 1000),
+                   ('Honda','Brown', 7000);
+        </sql>
+        <rollback>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="3" author="alekseev">
+        <sql>
+            insert into car (car_name,color, price)
+            VALUES ('Acura', 'black',1000),
+                   ('BMW', 'White', 1500),
+                   ('Kia','Brown', 6000);
+        </sql>
+    </changeSet>
+
+    <changeSet id="4" author="alekseev">
+        <sql>
+            alter table cars rename car;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DAOSupplierImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">repository</a> &gt; <a href="index.source.html" class="el_package">DAO</a> &gt; <span class="el_source">DAOSupplierImpl.java</span></div><h1>DAOSupplierImpl.java</h1><pre class="source lang-java linenums">package DAO;
+
+import Entity.Manufacturer;
+import Entity.Supplier;
+
+
+import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
+import static DAO.DAOManufacturerImpl.em;
+
+<span class="nc" id="L12">public class DAOSupplierImpl implements DAOSupplier {</span>
+
+    @Override
+    public void create(Supplier supplier) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L16">        em.getTransaction().begin();</span>
+<span class="nc" id="L17">        em.persist(supplier);</span>
+<span class="nc" id="L18">        em.getTransaction().commit();</span>
+<span class="nc" id="L19">    }</span>
+
+    @Override
+    public Supplier read(Serializable id) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L23">        em.getTransaction().begin();</span>
+<span class="nc" id="L24">        Supplier supplier = em.find(Supplier.class, id);</span>
+<span class="nc" id="L25">        return supplier;</span>
+    }
+
+    @Override
+    public List&lt;Supplier&gt; listAll() throws SQLException, ClassNotFoundException {
+<span class="nc" id="L30">        em.getTransaction().begin();</span>
+<span class="nc" id="L31">        List&lt;Supplier&gt; supplierList = (List) em.createQuery(&quot;SELECT S from Supplier s&quot;).getResultList();</span>
+<span class="nc" id="L32">        em.getTransaction().commit();</span>
+<span class="nc" id="L33">        return supplierList;</span>
+    }
+
+    @Override
+    public Supplier update(Supplier supplier) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L38">        em.getTransaction().begin();</span>
+<span class="nc" id="L39">        Supplier supplier1 = em.merge(supplier);</span>
+<span class="nc" id="L40">        em.getTransaction().commit();</span>
+<span class="nc" id="L41">        return supplier1;</span>
+    }
+
+    @Override
+    public void delete(Supplier supplier) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L46">        em.getTransaction().begin();</span>
+<span class="nc" id="L47">        em.remove(supplier);</span>
+<span class="nc" id="L48">        em.getTransaction().commit();</span>
+<span class="nc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

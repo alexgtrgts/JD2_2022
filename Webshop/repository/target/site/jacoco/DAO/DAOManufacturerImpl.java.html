@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DAOManufacturerImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">repository</a> &gt; <a href="index.source.html" class="el_package">DAO</a> &gt; <span class="el_source">DAOManufacturerImpl.java</span></div><h1>DAOManufacturerImpl.java</h1><pre class="source lang-java linenums">package DAO;
+
+import Entity.Manufacturer;
+import Util.HibernateUtil;
+
+import javax.persistence.EntityManager;
+import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
+
+<span class="nc" id="L11">public class DAOManufacturerImpl implements DAOManufacturer {</span>
+
+<span class="nc" id="L13">    public static final EntityManager em = HibernateUtil.getentityManager();</span>
+
+    @Override
+    public List&lt;Manufacturer&gt; listAll() throws SQLException, ClassNotFoundException {
+<span class="nc" id="L17">        em.getTransaction().begin();</span>
+<span class="nc" id="L18">        List&lt;Manufacturer&gt; manufacturerList = (List) em.createQuery(&quot;SELECT M from Manufacturer m&quot;).getResultList();</span>
+<span class="nc" id="L19">        em.getTransaction().commit();</span>
+<span class="nc" id="L20">        return manufacturerList;</span>
+    }
+
+    @Override
+    public void create(Manufacturer manufacturer) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L25">        em.getTransaction().begin();</span>
+<span class="nc" id="L26">        em.persist(manufacturer);</span>
+<span class="nc" id="L27">        em.getTransaction().commit();</span>
+<span class="nc" id="L28">    }</span>
+
+    @Override
+    public Manufacturer read(Serializable id) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L32">        em.getTransaction().begin();</span>
+<span class="nc" id="L33">        Manufacturer manufacturer = em.find(Manufacturer.class, id);</span>
+<span class="nc" id="L34">        return manufacturer;</span>
+    }
+
+    @Override
+    public Manufacturer update(Manufacturer manufacturer) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L39">        em.getTransaction().begin();</span>
+<span class="nc" id="L40">        Manufacturer manufacturer1 = em.merge(manufacturer);</span>
+<span class="nc" id="L41">        em.getTransaction().commit();</span>
+<span class="nc" id="L42">        return manufacturer;</span>
+    }
+
+    @Override
+    public void delete(Manufacturer manufacturer) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L47">        em.getTransaction().begin();</span>
+<span class="nc" id="L48">        em.remove(manufacturer);</span>
+<span class="nc" id="L49">        em.getTransaction().commit();</span>
+<span class="nc" id="L50">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

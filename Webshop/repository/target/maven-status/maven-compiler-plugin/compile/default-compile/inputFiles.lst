@@ -1,0 +1,14 @@
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAO.java
+D:\Java\JD22022\Webshop\repository\src\main\java\Entity\Seller.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOManufacturer.java
+D:\Java\JD22022\Webshop\repository\src\main\java\Entity\Supplier.java
+D:\Java\JD22022\Webshop\repository\src\main\java\Util\HibernateUtil.java
+D:\Java\JD22022\Webshop\repository\src\main\java\Entity\Manufacturer.java
+D:\Java\JD22022\Webshop\repository\src\main\java\Entity\Product.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOProduct.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOManufacturerImpl.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOSeller.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOSellerImpl.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOSupplier.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOProductImpl.java
+D:\Java\JD22022\Webshop\repository\src\main\java\DAO\DAOSupplierImpl.java

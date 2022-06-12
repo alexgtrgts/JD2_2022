@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DAOProductImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">repository</a> &gt; <a href="index.source.html" class="el_package">DAO</a> &gt; <span class="el_source">DAOProductImpl.java</span></div><h1>DAOProductImpl.java</h1><pre class="source lang-java linenums">package DAO;
+
+import Entity.Manufacturer;
+import Entity.Product;
+import Util.HibernateUtil;
+
+import javax.persistence.EntityManager;
+import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
+
+<span class="nc" id="L12">public class DAOProductImpl implements DAOProduct {</span>
+
+<span class="nc" id="L14">    public static final EntityManager em = HibernateUtil.getentityManager();</span>
+
+    @Override
+    public List&lt;Product&gt; listAll() throws SQLException, ClassNotFoundException {
+<span class="nc" id="L18">        em.getTransaction().begin();</span>
+<span class="nc" id="L19">        List&lt;Product&gt; productList = (List) em.createQuery(&quot;SELECT P from Product p&quot;).getResultList();</span>
+<span class="nc" id="L20">        em.getTransaction().commit();</span>
+<span class="nc" id="L21">        return productList;</span>
+    }
+
+    @Override
+    public void create(Product product) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L26">        em.getTransaction().begin();</span>
+<span class="nc" id="L27">        em.persist(product);</span>
+<span class="nc" id="L28">        em.getTransaction().commit();</span>
+<span class="nc" id="L29">    }</span>
+
+    @Override
+    public Product read(Serializable id) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L33">        em.getTransaction().begin();</span>
+<span class="nc" id="L34">        Product product = em.find(Product.class, id);</span>
+<span class="nc" id="L35">        return product;</span>
+    }
+
+    @Override
+    public Product update(Product product) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L40">        em.getTransaction().begin();</span>
+<span class="nc" id="L41">        Product product1 = em.merge(product);</span>
+<span class="nc" id="L42">        em.getTransaction().commit();</span>
+<span class="nc" id="L43">        return product1;</span>
+    }
+
+    @Override
+    public void delete(Product product) throws SQLException, ClassNotFoundException {
+<span class="nc" id="L48">        em.getTransaction().begin();</span>
+<span class="nc" id="L49">        em.remove(product);</span>
+<span class="nc" id="L50">        em.getTransaction().commit();</span>
+<span class="nc" id="L51">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

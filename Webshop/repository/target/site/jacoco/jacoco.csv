@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+repository,Entity,Manufacturer.ManufacturerBuilder,54,0,0,0,1,0,8,0,8,0
+repository,Entity,Seller.SellerBuilder,54,0,0,0,1,0,8,0,8,0
+repository,Entity,Supplier.SupplierBuilder,54,0,0,0,1,0,8,0,8,0
+repository,Entity,Supplier,149,0,14,0,16,0,23,0,16,0
+repository,Entity,Seller,139,0,14,0,15,0,22,0,15,0
+repository,Entity,Product.ProductBuilder,81,0,0,0,1,0,11,0,11,0
+repository,Entity,Manufacturer,129,0,14,0,14,0,22,0,15,0
+repository,Entity,Product,208,0,16,0,22,0,30,0,22,0
+repository,DAO,DAOManufacturerImpl,63,0,0,0,21,0,7,0,7,0
+repository,DAO,DAOSupplierImpl,60,0,0,0,20,0,6,0,6,0
+repository,DAO,DAOSellerImpl,60,0,0,0,20,0,6,0,6,0
+repository,DAO,DAOProductImpl,63,0,0,0,21,0,7,0,7,0
+repository,Util,HibernateUtil,13,0,0,0,6,0,4,0,4,0
