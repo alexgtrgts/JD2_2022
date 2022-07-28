@@ -24,7 +24,7 @@ public class DeleteProductServlet extends HttpServlet {
             e.printStackTrace();
         }
         //ServletContext context = getServletContext();
-        resp.sendRedirect(req.getContextPath() + "/listAll");
+        resp.sendRedirect(req.getContextPath() + "/listAllProducts");
         //rd.forward(req,resp);
     }
 }

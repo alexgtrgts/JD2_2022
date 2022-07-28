@@ -31,7 +31,7 @@ public class UpdateProductServlet extends HttpServlet {
                 .price(Double.parseDouble(price))
                 .build();
         Product read = dpi.update(product);
-        resp.sendRedirect(req.getContextPath()+"/listAll");
+        resp.sendRedirect(req.getContextPath() + "/listAllProducts");
 
     }
 }

@@ -1,7 +1,7 @@
 package serv;
 
-import DAO.DAOSupplierImpl;
-import Entity.Supplier;
+import DAO.DAOManufacturerImpl;
+import Entity.Manufacturer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,17 +14,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(value = "/listAllSuppliers")
-public class ListAllSuppliersServlet extends HttpServlet {
+@WebServlet(value = "/listAllManufacturers")
+public class ListAllManufacturersServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAOSupplierImpl dsi = new DAOSupplierImpl();
+        DAOManufacturerImpl dmi = new DAOManufacturerImpl();
         try {
-            List<Supplier> supplierList = dsi.listAll();
+            List<Manufacturer> manufacturer = dmi.listAll();
             ServletContext context = getServletContext();
-            RequestDispatcher rd = context.getRequestDispatcher("/ListAllSuppliers.jsp");
-            req.setAttribute("supplier", supplierList);
+            RequestDispatcher rd = context.getRequestDispatcher("/ListAllManufacturers.jsp");
+            req.setAttribute("manufacturer", manufacturer);
             rd.forward(req, resp);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

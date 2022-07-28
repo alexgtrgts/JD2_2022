@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(value = "/listAll")
+@WebServlet(value = "/listAllProducts")
 public class ListAllProductsServlet extends HttpServlet {
 
     @Override
@@ -24,8 +24,8 @@ public class ListAllProductsServlet extends HttpServlet {
             List<Product> product = dpi.listAll();
             ServletContext context = getServletContext();
             RequestDispatcher rd = context.getRequestDispatcher("/ListAllProducts.jsp");
-            req.setAttribute("product",product);
-            rd.forward(req,resp);
+            req.setAttribute("product", product);
+            rd.forward(req, resp);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {

@@ -27,14 +27,14 @@ public class DAOSupplierImpl implements DAOSupplier {
     @Override
     public List<Supplier> listAll() throws SQLException, ClassNotFoundException {
         em.getTransaction().begin();
-        List<Supplier> supplierList = (List) em.createQuery("SELECT S from Supplier s").getResultList();
+        List<Supplier> supplierList = (List) em.createQuery("SELECT S from Supplier S").getResultList();
         em.getTransaction().commit();
         return supplierList;
     }
 
     @Override
     public Supplier update(Supplier supplier) throws SQLException, ClassNotFoundException {
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         Supplier supplier1 = em.merge(supplier);
         em.getTransaction().commit();
         return supplier1;

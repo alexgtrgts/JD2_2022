@@ -12,7 +12,7 @@ public class DAOSellerImpl implements DAOSeller {
     @Override
     public List<Seller> listAll() throws SQLException, ClassNotFoundException {
         em.getTransaction().begin();
-        List<Seller> sellerList = (List) em.createQuery("SELECT S from Seller s").getResultList();
+        List<Seller> sellerList = (List) em.createQuery("SELECT S from Seller S").getResultList();
         em.getTransaction().commit();
         return sellerList;
     }
@@ -33,7 +33,7 @@ public class DAOSellerImpl implements DAOSeller {
 
     @Override
     public Seller update(Seller seller) throws SQLException, ClassNotFoundException {
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         Seller seller1 = em.merge(seller);
         em.getTransaction().commit();
         return seller1;

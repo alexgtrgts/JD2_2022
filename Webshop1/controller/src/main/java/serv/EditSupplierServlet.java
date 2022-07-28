@@ -24,7 +24,7 @@ public class EditSupplierServlet extends HttpServlet {
         Supplier sup = dsi.read(Integer.parseInt(param));
         ServletContext context = getServletContext();
         RequestDispatcher rd = context.getRequestDispatcher("/EditSupplier.jsp");
-        req.setAttribute("supplier",sup);
-        rd.forward(req,resp);
+        req.setAttribute("supplier", sup);
+        rd.forward(req, resp);
     }
 }

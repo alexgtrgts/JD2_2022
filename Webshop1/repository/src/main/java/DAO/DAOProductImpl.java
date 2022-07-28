@@ -15,7 +15,7 @@ public class DAOProductImpl implements DAOProduct {
     @Override
     public List<Product> listAll() throws SQLException, ClassNotFoundException {
         em.getTransaction().begin();
-        List<Product> productList = (List) em.createQuery("SELECT P from Product p").getResultList();
+        List<Product> productList = (List) em.createQuery("SELECT P from Product P").getResultList();
         em.getTransaction().commit();
         return productList;
     }
@@ -36,7 +36,7 @@ public class DAOProductImpl implements DAOProduct {
 
     @Override
     public Product update(Product product) throws SQLException, ClassNotFoundException {
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         Product product1 = em.merge(product);
         em.getTransaction().commit();
         return product1;
@@ -44,7 +44,7 @@ public class DAOProductImpl implements DAOProduct {
 
     @Override
     public void delete(Serializable id) throws SQLException, ClassNotFoundException {
-        Product product = (Product) em.find(Product.class, id);
+        Product product = em.find(Product.class, id);
         em.getTransaction().begin();
         em.remove(product);
         em.getTransaction().commit();

@@ -1,7 +1,7 @@
 package serv;
 
-import DAO.DAOProductImpl;
-import Entity.Product;
+import DAO.DAOSellerImpl;
+import Entity.Seller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,30 +12,29 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(value = "/AddProduct")
-public class AddProductServlet extends HttpServlet {
+@WebServlet(value = "/AddSeller")
+public class AddSellerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAOProductImpl dpi = new DAOProductImpl();
-        PrintWriter pw = resp.getWriter();
+        DAOSellerImpl dsi = new DAOSellerImpl();
+        PrintWriter pw =resp.getWriter();
         String name = req.getParameter("name");
-        String type = req.getParameter("type");
-        String description = req.getParameter("description");
-        String price = req.getParameter("price");
-        Product product;
-        product = new Product(name, Double.parseDouble(price), type, description);
+        String address = req.getParameter("address");
+        String tel = req.getParameter("tel");
+        Seller seller;
+        seller = new Seller(name,address,tel);
         try {
-            dpi.create(product);
+            dsi.create(seller);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        pw.println("You have successfully added a product!");
+        pw.println("You have successfully added a Manufacturer!");
         resp.setContentType("text/html");
         pw.println("<html><body>");
-        pw.println("<a href=\"listAllProducts\">Go back</a>");
+        pw.println("<a href=\"listAllSellers\">Go back</a>");
         pw.println("</body></html>");
     }
 }

@@ -15,7 +15,7 @@ public class DAOManufacturerImpl implements DAOManufacturer {
     @Override
     public List<Manufacturer> listAll() throws SQLException, ClassNotFoundException {
         em.getTransaction().begin();
-        List<Manufacturer> manufacturerList = (List) em.createQuery("SELECT M from Manufacturer m").getResultList();
+        List<Manufacturer> manufacturerList = (List) em.createQuery("SELECT M from Manufacturer M").getResultList();
         em.getTransaction().commit();
         return manufacturerList;
     }
@@ -36,15 +36,15 @@ public class DAOManufacturerImpl implements DAOManufacturer {
 
     @Override
     public Manufacturer update(Manufacturer manufacturer) throws SQLException, ClassNotFoundException {
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         Manufacturer manufacturer1 = em.merge(manufacturer);
         em.getTransaction().commit();
-        return manufacturer;
+        return manufacturer1;
     }
 
     @Override
     public void delete(Serializable id) throws SQLException, ClassNotFoundException {
-        Manufacturer manufacturer = (Manufacturer) em.find(Manufacturer.class, id);
+        Manufacturer manufacturer = em.find(Manufacturer.class, id);
         em.getTransaction().begin();
         em.remove(manufacturer);
         em.getTransaction().commit();

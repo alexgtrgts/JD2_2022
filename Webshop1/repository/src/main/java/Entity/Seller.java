@@ -31,6 +31,12 @@ public class Seller implements Serializable {
     @Column
     private String tel;
 
+    public Seller(String name, String address, String tel) {
+        this.name = name;
+        this.address = address;
+        this.tel = tel;
+    }
+
     @ManyToMany(mappedBy = "sellerSet")
     private Set<Product> productSet = new HashSet<>();
 

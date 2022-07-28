@@ -32,6 +32,12 @@ public class Manufacturer implements Serializable {
     @PrimaryKeyJoinColumn
     private Product product;
 
+    public Manufacturer(String name, String address, String brand) {
+        this.name = name;
+        this.address = address;
+        this.brand = brand;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
