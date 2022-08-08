@@ -7,3 +7,11 @@
 /dataSources/
 /dataSources.local.xml
 /idea/
+/controller/controller.iml
+/repository/repository.iml
+/service/service.iml
+/Webshop1.iml
+/controller/target/
+/repository/target/
+/service/target/
+/.idea/

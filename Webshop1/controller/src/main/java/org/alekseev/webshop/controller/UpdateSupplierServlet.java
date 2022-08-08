@@ -1,4 +1,4 @@
-package serv;
+package org.alekseev.webshop.controller;
 
 import DAO.DAOSupplierImpl;
 import Entity.Supplier;

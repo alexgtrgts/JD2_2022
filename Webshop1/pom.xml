@@ -4,15 +4,22 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>it.academy</groupId>
-  <artifactId>Webshop1</artifactId>
-  <version>1</version>
-  <packaging>pom</packaging>
   <modules>
     <module>repository</module>
     <module>service</module>
     <module>controller</module>
   </modules>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.4.0</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>it.academy</groupId>
+  <artifactId>Webshop1</artifactId>
+  <version>1</version>
+  <packaging>pom</packaging>
 
   <name>Webshop1 Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
@@ -24,15 +31,60 @@
     <maven.compiler.target>11</maven.compiler.target>
     <lombok.version>1.18.24</lombok.version>
     <spring.version>5.3.21</spring.version>
+    <start-class>org.alekseev.webshop.WebShopApp</start-class>
   </properties>
 
   <dependencies>
     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>5.7.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+      <version>4.8.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.29</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.24</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <!--<dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>${lombok.version}</version>
       <optional>true</optional>
-    </dependency>
+    </dependency>-->
 <!--    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -84,25 +136,25 @@
       <version>2.3.2</version>
     </dependency>-->
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
-    <dependency>
+<!--    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <version>2.7.1</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa &ndash;&gt;
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
       <version>2.7.1</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-core &ndash;&gt;
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
       <version>5.3.22</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-context &ndash;&gt;
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
@@ -112,11 +164,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
-    </dependency>
+    </dependency>-->
   </dependencies>
 
-  <build>
-    <!--<finalName>Webshop1</finalName> -->
+  <!--<build>
+    &lt;!&ndash;<finalName>Webshop1</finalName> &ndash;&gt;
       <plugins>
         <plugin>
           <groupId>org.springframework.boot</groupId>
@@ -143,7 +195,7 @@
             </excludes>
           </configuration>
         </plugin>
-        <!--<plugin>
+        &lt;!&ndash;<plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
@@ -171,7 +223,7 @@
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
-        </plugin>-->
+        </plugin>&ndash;&gt;
       </plugins>
-  </build>
+  </build>-->
 </project>

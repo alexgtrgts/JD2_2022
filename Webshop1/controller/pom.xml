@@ -7,16 +7,42 @@
         <groupId>it.academy</groupId>
         <version>1</version>
     </parent>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
         <spring.version>5.3.21</spring.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <artifactId>controller</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>it.academy</groupId>
+            <artifactId>service</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+
+<!--
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -28,11 +54,6 @@
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.3</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>it.academy</groupId>
-            <artifactId>service</artifactId>
-            <version>1</version>
         </dependency>
         <dependency>
             <groupId>it.academy</groupId>
@@ -54,14 +75,18 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>9.0.43</version>
         </dependency>
+-->
 
+<!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <version>2.7.2</version>
         </dependency>
+-->
     </dependencies>
 
+<!--
     <build>
         <plugins>
             <plugin>
@@ -71,5 +96,6 @@
             </plugin>
         </plugins>
     </build>
+-->
 
 </project>

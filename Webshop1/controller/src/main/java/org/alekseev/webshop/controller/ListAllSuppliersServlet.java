@@ -1,7 +1,7 @@
-package serv;
+package org.alekseev.webshop.controller;
 
-import DAO.DAOProductImpl;
-import Entity.Product;
+import DAO.DAOSupplierImpl;
+import Entity.Supplier;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,17 +14,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(value = "/listAllProducts")
-public class ListAllProductsServlet extends HttpServlet {
+@WebServlet(value = "/listAllSuppliers")
+public class ListAllSuppliersServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAOProductImpl dpi = new DAOProductImpl();
+        DAOSupplierImpl dsi = new DAOSupplierImpl();
         try {
-            List<Product> product = dpi.listAll();
+            List<Supplier> supplierList = dsi.listAll();
             ServletContext context = getServletContext();
-            RequestDispatcher rd = context.getRequestDispatcher("/ListAllProducts.jsp");
-            req.setAttribute("product", product);
+            RequestDispatcher rd = context.getRequestDispatcher("/ListAllSuppliers.jsp");
+            req.setAttribute("supplier", supplierList);
             rd.forward(req, resp);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

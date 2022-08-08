@@ -1,7 +1,7 @@
-package serv;
+package org.alekseev.webshop.controller;
 
-import DAO.DAOSellerImpl;
-import Entity.Seller;
+import DAO.DAOManufacturerImpl;
+import Entity.Manufacturer;
 import lombok.SneakyThrows;
 
 import javax.servlet.ServletException;
@@ -11,24 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/updateSeller")
-public class UpdateSellerServlet extends HttpServlet {
+@WebServlet(value = "/updateManufacturer")
+public class UpdateManufacturerServlet extends HttpServlet {
 
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAOSellerImpl dsi = new DAOSellerImpl();
+        DAOManufacturerImpl dmi = new DAOManufacturerImpl();
         String param = req.getParameter("id");
         String name = req.getParameter("name");
         String address = req.getParameter("address");
-        String tel = req.getParameter("tel");
-        Seller seller = Seller.builder()
+        String brand = req.getParameter("brand");
+        Manufacturer manufacturer = Manufacturer.builder()
                 .id(Integer.parseInt(param))
                 .name(name)
                 .address(address)
-                .tel(tel)
+                .brand(brand)
                 .build();
-        Seller read = dsi.update(seller);
-        resp.sendRedirect(req.getContextPath() + "/listAllSellers");
+        Manufacturer read = dmi.update(manufacturer);
+        resp.sendRedirect(req.getContextPath() + "/listAllManufacturers");
+
     }
 }

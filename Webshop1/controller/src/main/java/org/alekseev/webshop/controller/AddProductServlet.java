@@ -1,7 +1,7 @@
-package serv;
+package org.alekseev.webshop.controller;
 
-import DAO.DAOManufacturerImpl;
-import Entity.Manufacturer;
+import DAO.DAOProductImpl;
+import Entity.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,29 +12,30 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(value = "/AddManufacturer")
-public class AddManufacturerServlet extends HttpServlet {
+@WebServlet(value = "/AddProduct")
+public class AddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAOManufacturerImpl dmi = new DAOManufacturerImpl();
-        PrintWriter pw =resp.getWriter();
+        DAOProductImpl dpi = new DAOProductImpl();
+        PrintWriter pw = resp.getWriter();
         String name = req.getParameter("name");
-        String address = req.getParameter("address");
-        String brand = req.getParameter("brand");
-        Manufacturer manufacturer;
-        manufacturer = new Manufacturer(name,address,brand);
+        String type = req.getParameter("type");
+        String description = req.getParameter("description");
+        String price = req.getParameter("price");
+        Product product;
+        product = new Product(name, Double.parseDouble(price), type, description);
         try {
-            dmi.create(manufacturer);
+            dpi.create(product);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        pw.println("You have successfully added a Manufacturer!");
+        pw.println("You have successfully added a product!");
         resp.setContentType("text/html");
         pw.println("<html><body>");
-        pw.println("<a href=\"listAllManufacturers\">Go back</a>");
+        pw.println("<a href=\"listAllProducts\">Go back</a>");
         pw.println("</body></html>");
     }
 }
